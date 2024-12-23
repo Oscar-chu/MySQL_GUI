@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+   This is the MySQL GUI...
+</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Application ID</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Application Date</th>
+        <th scope="col">Interview Status</th>
+        <th scope="col">Application Result</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        {% if record %}
+        {% for job in record %}
+        <td>{{job.application_id}}</td>
+        <td>{{job.job_title}}</td>
+        <td>{{job.company_name}}</td>
+        <td>{{job.application_date}}</td> 
+        <td>{{job.interview_status}}</td>
+        <td>{{job.application_result}}</td>
+     </tr>
+        {% endfor %}
+       {% endif %}
+     
+
+    </tbody>
+  </table>
+
+
+    <div class="pagination justify-content-center">
+ 
+        <span class="step-links">
+            {% if record.has_previous %}
+                <a class = "btn btn-primary" href="?page=1">&laquo; first</a>
+                <a class = "btn btn-dark" href="?page={{ record.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ record.number }} of {{ record.paginator.num_pages }}.
+            </span>
+    
+            {% if record.has_next %}
+                <a class = "btn btn-dark" href="?page={{ record.next_page_number }}">next</a>
+                <a class = "btn btn-primary" href="?page={{ record.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+      
+    </div>
+
+{% endblock %}

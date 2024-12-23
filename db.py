@@ -9,12 +9,3 @@ my_database = mysql.connector.connect(
 )
 
 my_database.close()
-
-
-
-
-
-
-
-
-

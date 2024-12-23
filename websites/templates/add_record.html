@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Create a new job application record</h1>
+<form method="POST" action=""{% url 'add_record' %}>
+{% csrf_token %}
+{{ form.as_p}}
+
+<br/> 
+<button type="submit" class="btn btn-primary">
+    Add Job Application
+</button>
+
+</form>
+
+{% endblock %}

@@ -2,40 +2,62 @@
 
 {% block content %}
 <h1>
-   This is the MySQL GUI...
+  Main Page
 </h1>
-<table class="table table-striped">
+
+<div>
+<table style = "height: 400px;" class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Application ID</th>
         <th scope="col">Job Title</th>
         <th scope="col">Company Name</th>
         <th scope="col">Application Date</th>
+        <th scope="col">Edit Status</th>
         <th scope="col">Interview Status</th>
         <th scope="col">Application Result</th>
+      
       </tr>
     </thead>
 
     <tbody>
       <tr>
         {% if record %}
-        {% for job in record %}
-        <td>{{job.application_id}}</td>
-        <td>{{job.job_title}}</td>
-        <td>{{job.company_name}}</td>
-        <td>{{job.application_date}}</td> 
-        <td>{{job.interview_status}}</td>
-        <td>{{job.application_result}}</td>
-     </tr>
-        {% endfor %}
-       {% endif %}
-     
-
+          {% for job in record %}
+            <td>{{job.application_id}}</td>
+            <td>{{job.job_title}}</td>
+            <td>{{job.company_name}}</td>
+            <td>{{job.application_date}}</td>
+            <td>
+            {% comment %} update_record takes an additional argument  {% endcomment %}
+              <a href = "{% url 'update_record' target_job_id=job.pk %}">
+              Edit Status 
+              </a>
+            </td>
+            <td>
+              {% if job.interview_status == 0 %}
+                No interview
+              {% else %} 
+                Interviewed 
+              {% endif %}
+            </td>
+            <td>
+              {% if job.application_result == 1 %}
+                Successful
+              {% else %}
+                Unsuccessful
+              {% endif %}
+            </td>
+           </tr>
+          {% endfor %}
+         {% endif %}
+      
     </tbody>
   </table>
 
+</div>
 
-    <div class="pagination justify-content-center">
+<div style="height: 160px;" class="pagination justify-content-center">
  
         <span class="step-links">
             {% if record.has_previous %}
@@ -53,6 +75,6 @@
             {% endif %}
         </span>
       
-    </div>
+</div>
 
 {% endblock %}

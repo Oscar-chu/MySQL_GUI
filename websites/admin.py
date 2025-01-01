@@ -1,4 +1,6 @@
 from django.contrib import admin
-from .models import JobSearchRecord # import this 
+
+# import the JobSearchRecord into the admin site
+from .models import JobSearchRecord
 
 admin.site.register(JobSearchRecord)

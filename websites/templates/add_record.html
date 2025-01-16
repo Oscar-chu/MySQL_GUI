@@ -4,7 +4,7 @@
 <h1>Create a new job application record</h1>
 
 <div class="row justify-content-center">
-<form method="POST" action="" {% url 'add_record'  %}>
+<form method="POST">
 {% csrf_token %}
 {{form.as_p}}
 

@@ -4,7 +4,7 @@
 <h1>Update an exisiting job search record</h1>
 
 <div class="row justify-content-center">
-<form method="POST" action="" {% url 'update_record'}>
+<form method="POST">
 {% csrf_token %}
 {{form.as_p}}
 

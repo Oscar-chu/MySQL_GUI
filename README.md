@@ -1,4 +1,4 @@
-# Job Application Record Tracker 
+# Personal Job Application Tracker  
 This is my very first github project. This is a web-app written in Python using the Django Framework.
 This is a CRUD web-app using MySQL as database. 
 
